@@ -31,7 +31,7 @@ public class RobotCommActivity extends Activity {
     private EditText editRobotName;
     private EditText editXMPPstatus, editC2DMstatus, editBluetoothStatus, editStatus;
     private String robotName, host, port, service, userid, password, bluetooth, recipient, recipientForEcho;
-    private static final int timerUpdateRate = 500;
+    private static final int timerUpdateRate = 10000;
 	private Timer checkStateTimer;
 	private GUItimer MyGUItimer;
 	private Context _context;
@@ -189,6 +189,7 @@ public class RobotCommActivity extends Activity {
     		}
 		} else {
         		editStatus.setText("Error in user entries, check setup parameters");
+        		Log.d(LOG, "Failed entriesTest in Connect");
     	    	Intent startIntent = new Intent(this, com.denbar.RobotComm.credentialsActivity.class);
     		    startActivity(startIntent);
 		}
@@ -249,7 +250,12 @@ public class RobotCommActivity extends Activity {
     		message += "bluetooth ";
         	returnResult = false;
     	}
-    	if (!returnResult) editStatus.setText(message);
+    	if (!returnResult)
+    	{
+    		Log.d(LOG, "failed EntriesTest");
+    		editStatus.setText(message);
+    	}
+    	else Log.d(LOG, "passed EntriesTest");
     	return returnResult;
 	}
 

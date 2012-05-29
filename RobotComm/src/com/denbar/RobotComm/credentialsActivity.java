@@ -5,13 +5,15 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 public class credentialsActivity extends Activity {
 
-    private EditText editRobotName, editUserID, editPassword, editBluetooth;
+	private static final String LOG = "credentialsActivity";
+	private EditText editRobotName, editUserID, editPassword, editBluetooth;
     private EditText editStatus;
     private String robotName, userid, password, bluetooth;
 
@@ -85,7 +87,12 @@ public class credentialsActivity extends Activity {
     		message += "bluetooth ";
         	returnResult = false;
     	}
-    	if (!returnResult) editStatus.setText(message);
+    	if (!returnResult)
+    	{
+    		Log.d(LOG, "failed EntriesTest");
+    		editStatus.setText(message);
+    	}
+    	else Log.d(LOG, "passed EntriesTest");
     	return returnResult;
 	}
 }

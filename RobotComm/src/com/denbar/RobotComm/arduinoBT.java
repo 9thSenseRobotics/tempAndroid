@@ -202,7 +202,7 @@ public class arduinoBT
 		{
 			for(BluetoothDevice device : pairedDevices)
 			{
-				if (device.getName().startsWith("FireFly-"))
+				if (device.getName().startsWith("FireFly-") || device.getName().startsWith("RN42-"))
 				{
 					_bluetoothTarget = device;
 					Log.d(LOG, "Found ardunio BT device named " + _bluetoothTarget.getName());
@@ -216,6 +216,13 @@ public class arduinoBT
 			Log.d(LOG, "BT adapter is not STATE_ON so we could not list paired BT devices");
 			return false;
 		}
+
+		if (_bluetoothTarget == null)
+		{
+			Log.d(LOG, "no BT target found that matches our BT device");
+			return false;
+		}
+
 		if (_bluetoothTarget.getBondState() != BluetoothDevice.BOND_BONDED)
 		{
 			Log.d(LOG, "Unable to find a paired arduino BT");
