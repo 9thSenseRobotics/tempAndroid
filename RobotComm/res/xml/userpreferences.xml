@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+		android:key="SHOW_TOASTs"
+		android:title="Show event notices"
+		android:summary="Select to show when communication events occur"
+		android:defaultValue="true"
+    />
+
+	<CheckBoxPreference
+		android:key="AUTO_CONNECT"
+		android:title="Automatically connect"
+		android:summary="Connect to bluetooth and servers upon bootup and after momentary signal losses"
+		android:defaultValue="true"
+	/>
+
+	<EditTextPreference
+		android:key="robotname"
+		android:title="name"
+		android:summary="Enter your robot's name"
+		android:defaultValue="dan's helo one"
+		/>
+
+		<EditTextPreference
+		android:key="userid"
+		android:title="User ID"
+		android:summary="Enter your User ID (not the @ part)"
+		android:defaultValue="helo.one"
+		/>
+
+		<EditTextPreference
+		android:key="password"
+		android:title="password"
+		android:summary="Enter your password"
+		android:defaultValue="9thsense"
+		/>
+
+		<EditTextPreference
+		android:key="bluetooth"
+		android:title="bluetooth address"
+		android:summary="Enter bluetooth mac address, include the :'s"
+		android:defaultValue="00:06:66:46:5A:91"
+		/>
+
+</PreferenceScreen>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.denbar.RobotComm"
+    android:versionCode="1"
+    android:versionName="@string/version" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application
+        android:icon="@drawable/icon9thsense"
+        android:label="@string/app_name" >
+        <activity
+            android:label="@string/app_name"
+            android:name=".RobotCommActivity" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="RobotComm Credentials"
+            android:name=".credentialsActivity" />
+        <activity
+            android:label="RobotComm Help"
+            android:name=".Help" />
+
+        <service
+            android:enabled="true"
+            android:label="RobotCommService"
+            android:name=".RobotCommService" >
+            <intent-filter >
+                <action android:name="com.denbar.RobotComm.RobotCommService" />
+            </intent-filter>
+        </service>
+
+        <!--
+        callback for boot completed, note that you need the permission here as well
+        to know when boot is finished
+        -->
+        <receiver
+            android:enabled="true"
+            android:name=".StartupIntentReceiver" >
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+            <intent-filter >
+                 <action android:name="com.denbar.action.ROBOT_COMMMAND" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:icon="@drawable/icon9thsense"
+            android:label="Robot Status"
+            android:name=".RobotCommWidget" >
+            <intent-filter >
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info" />
+        </receiver>
+
+        <service android:name=".UpdateWidgetService" >
+        </service>
+    </application>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.UPDATE_DEVICE_STATS"></uses-permission>
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+
+</manifest>
